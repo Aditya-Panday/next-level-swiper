@@ -92,7 +92,7 @@ const MainImageThumbnailCarousel: React.FC<MainImageThumbnailCarouselProps> = ({
     >
       {/* ── Main Image ─────────────────────────────────────────────────────── */}
       <div
-        className="relative w-full aspect-video bg-slate-950 rounded-[14px] overflow-hidden outline-none focus-visible:[box-shadow:0_0_0_3px_#6366f1]"
+        className="relative w-full aspect-video bg-slate-950 rounded-sm overflow-hidden outline-none focus-visible:[box-shadow:0_0_0_3px_#6366f1]"
         onKeyDown={handleMainKeyDown}
         tabIndex={0}
         role="img"
@@ -105,14 +105,16 @@ const MainImageThumbnailCarousel: React.FC<MainImageThumbnailCarouselProps> = ({
             key={img.id}
             src={img.mainUrl}
             alt={img.alt ?? `Gallery image ${i + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-200 ease-in-out ${
+            fetchPriority={i === activeIndex ? "high" : "auto"}
+            className={`absolute inset-0 w-full h-full object-cover ${
               i === activeIndex
                 ? isTransitioning
-                  ? "opacity-0 z-10"
+                  ? "opacity-0 z-10 transition-opacity duration-200 ease-in-out"
                   : "opacity-100 z-10"
-                : "opacity-0 z-0"
+                : "opacity-0 z-0 transition-opacity duration-200 ease-in-out"
             }`}
-            priority={i === 0}
+            loading={i === activeIndex ? "eager" : "lazy"}
+            priority={i === activeIndex}
             fill
             sizes="(max-width: 900px) 100vw, 900px"
           />
