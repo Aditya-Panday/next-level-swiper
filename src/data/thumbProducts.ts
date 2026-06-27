@@ -104,7 +104,7 @@ export const GALLERY_IMAGES: CarouselImage[] = [
     alt: "Currency and finances",
   },
   {
-    id: "img5",
+    id: "img51",
     mainUrl:
       "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=1200&q=85",
     thumbnailUrl:
@@ -112,7 +112,7 @@ export const GALLERY_IMAGES: CarouselImage[] = [
     alt: "Mobile payment app",
   },
   {
-    id: "img6",
+    id: "img622",
     mainUrl:
       "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=85",
     thumbnailUrl:
@@ -120,7 +120,7 @@ export const GALLERY_IMAGES: CarouselImage[] = [
     alt: "E-commerce shopping experience",
   },
   {
-    id: "img5",
+    id: "img522",
     mainUrl:
       "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=1200&q=85",
     thumbnailUrl:
@@ -128,7 +128,7 @@ export const GALLERY_IMAGES: CarouselImage[] = [
     alt: "Mobile payment app",
   },
   {
-    id: "img6",
+    id: "img61",
     mainUrl:
       "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=85",
     thumbnailUrl:
@@ -136,7 +136,7 @@ export const GALLERY_IMAGES: CarouselImage[] = [
     alt: "E-commerce shopping experience",
   },
   {
-    id: "img5",
+    id: "img52",
     mainUrl:
       "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=1200&q=85",
     thumbnailUrl:
@@ -144,7 +144,7 @@ export const GALLERY_IMAGES: CarouselImage[] = [
     alt: "Mobile payment app",
   },
   {
-    id: "img6",
+    id: "img63",
     mainUrl:
       "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=85",
     thumbnailUrl:
