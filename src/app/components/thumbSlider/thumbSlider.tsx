@@ -4,6 +4,8 @@ import { MainImageThumbnailCarouselProps } from "@/src/types/craousel";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import React, { KeyboardEvent, useEffect, useRef, useState } from "react";
+import LeftSlideButton from "../customSwiper/swiperButtons/leftSlideButton";
+import RightSlideButton from "../customSwiper/swiperButtons/rightSlideButton";
 
 const MainImageThumbnailCarousel: React.FC<MainImageThumbnailCarouselProps> = ({
   images,
@@ -42,14 +44,14 @@ const MainImageThumbnailCarousel: React.FC<MainImageThumbnailCarouselProps> = ({
     }
   };
 
-  // FIX: scrollIntoView — simpler and correct
-  useEffect(() => {
-    activeThumbRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center",
-    });
-  }, [activeIndex]);
+  // // FIX: scrollIntoView — simpler and correct
+  // useEffect(() => {
+  //   activeThumbRef.current?.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "nearest",
+  //     inline: "center",
+  //   });
+  // }, [activeIndex]);
 
   if (!images.length) return null;
 
@@ -90,22 +92,10 @@ const MainImageThumbnailCarousel: React.FC<MainImageThumbnailCarouselProps> = ({
         ))}
 
         {/* Previous */}
-        <button
-          onClick={prev}
-          aria-label="Previous image"
-          className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-slate-900 backdrop-blur-sm transition-[background,scale] duration-150 hover:scale-105 hover:bg-white focus-visible:outline-2 focus-visible:outline-indigo-500 max-sm:h-8 max-sm:w-8"
-        >
-          <ArrowLeft className="h-5 w-5 max-sm:h-4 max-sm:w-4" />
-        </button>
+        <LeftSlideButton onClick={prev} />
 
         {/* Next */}
-        <button
-          onClick={next}
-          aria-label="Next image"
-          className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-slate-900 backdrop-blur-sm transition-[background,scale] duration-150 hover:scale-105 hover:bg-white focus-visible:outline-2 focus-visible:outline-indigo-500 max-sm:h-8 max-sm:w-8"
-        >
-          <ArrowRight className="h-5 w-5 max-sm:h-4 max-sm:w-4" />
-        </button>
+        <RightSlideButton onClick={next} />
 
         {/* Counter */}
         {countVisible && (
@@ -119,6 +109,7 @@ const MainImageThumbnailCarousel: React.FC<MainImageThumbnailCarouselProps> = ({
         FIX: aria-live region — screen readers announce slide changes on keyboard nav.
         sr-only keeps it visually hidden.
       */}
+
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         {active?.alt ?? `Image ${activeIndex + 1} of ${images.length}`}
       </div>
@@ -174,19 +165,6 @@ const MainImageThumbnailCarousel: React.FC<MainImageThumbnailCarouselProps> = ({
           );
         })}
       </div>
-
-      {/*
-        FIX: <style jsx> gone. Add this to your globals.css or tailwind.config.js instead:
-
-        globals.css:
-          @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-
-        tailwind.config.js extend.animation:
-          'fade-in': 'fadeIn .2s ease',
-
-        Then use: className="motion-safe:animate-fade-in"
-        (motion-safe: guard respects prefers-reduced-motion automatically)
-      */}
     </section>
   );
 };

@@ -6,7 +6,7 @@ type CardData = {
   tag: string;
 };
 
-export const CARDS: CardData[] = [
+export const CARDS_DATA: CardData[] = [
   {
     id: 1,
     title: "Stripe Integration",
