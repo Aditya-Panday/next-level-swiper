@@ -33,3 +33,36 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/*
+  Add these to your globals.css (or wherever your Tailwind base layer lives).
+  These can't be expressed in pure Tailwind utility classes:
+    1. @keyframes shimmer — for the LazyThumb skeleton loader
+    2. .no-scrollbar — hides overflow scrollbar cross-browser
+*/
+
+/* ── Skeleton shimmer ───────────────────────────────────────── */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/*
+  Used in LazyThumb as:
+    after:animate-[shimmer_1.4s_ease-in-out_infinite]
+
+  This is Tailwind v3 arbitrary value syntax — it references the keyframe
+  name defined above. Make sure this CSS is imported before Tailwind processes
+  the class, otherwise the animation won't resolve.
+*/
+
+/* ── Hide scrollbar (thumbnail strip) ──────────────────────── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE / Edge */
+  scrollbar-width: none; /* Firefox */
+}
